@@ -4,11 +4,11 @@ apply plugin: 'com.android.library'
 
 ext {
     bintrayRepo = 'dynamiclist'
-    bintrayName = 'dymaniclistlib'   // Has to be same as your library module name
+    bintrayName = 'dynamiclistlib'   // Has to be same as your library module name
 
     publishedGroupId = 'ru.taxcom.mobile.android'
     libraryName = 'dynamiclist'
-    artifact = 'dymaniclistlib'     // Has to be same as your library module name
+    artifact = 'dynamiclistlib'     // Has to be same as your library module name
 
     libraryDescription = 'Dynamic RecyclerView List base classes'
 
