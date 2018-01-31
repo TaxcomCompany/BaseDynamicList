@@ -57,7 +57,7 @@ public abstract class BaseDynamicListPresenter implements DynamicListPresenter {
     }
 
     protected boolean isListEmpty(List<BaseListItem> items) {
-        return items.isEmpty() || (items.size() == 1 && items.get(0).getType() != BaseListItem.Type.DATA);
+        return items.isEmpty() || (items.size() == 1 && items.get(0).getType() != BaseListItem.DATA);
     }
 
     @Override

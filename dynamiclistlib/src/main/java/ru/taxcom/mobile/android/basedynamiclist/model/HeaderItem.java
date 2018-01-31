@@ -14,8 +14,8 @@ public class HeaderItem implements BaseListItem {
     }
 
     @Override
-    public Type getType() {
-        return Type.HEADER;
+    public int getType() {
+        return HEADER;
     }
 
     @Override

@@ -40,7 +40,7 @@ public class DiffCallback extends DiffUtil.Callback {
             HeaderItem oldItem = (HeaderItem) mOldItems.get(oldItemPosition);
             HeaderItem newItem = (HeaderItem) mNewItems.get(newItemPosition);
             return oldItem.equals(newItem);
-        } else if (mOldItems.get(oldItemPosition).getType() != BaseListItem.Type.DATA &&
+        } else if (mOldItems.get(oldItemPosition).getType() != BaseListItem.DATA &&
                 mOldItems.get(oldItemPosition).getType() == mNewItems.get(newItemPosition).getType()) {
             return true;
         } else {

@@ -64,7 +64,7 @@ public abstract class DynamicListAdapter extends RecyclerView.Adapter<RecyclerVi
     }
 
     public void showProgress() {
-        if (mItems.isEmpty() || (mItems.get(mItems.size()-1).getType() != BaseListItem.Type.PROGRESS)) {
+        if (mItems.isEmpty() || (mItems.get(mItems.size()-1).getType() != BaseListItem.PROGRESS)) {
             List<BaseListItem> oldItems = new ArrayList<>(mItems);
             mItems.add(new ProgressItem());
             showUpdatedItems(oldItems);
@@ -73,7 +73,7 @@ public abstract class DynamicListAdapter extends RecyclerView.Adapter<RecyclerVi
 
     public void hideProgress() {
         int lastPosition = mItems.size() - 1;
-        if (!mItems.isEmpty() && mItems.get(lastPosition).getType() == BaseListItem.Type.PROGRESS) {
+        if (!mItems.isEmpty() && mItems.get(lastPosition).getType() == BaseListItem.PROGRESS) {
             List<BaseListItem> oldItems = new ArrayList<>(mItems);
             mItems.remove(lastPosition);
             showUpdatedItems(oldItems);
@@ -81,7 +81,7 @@ public abstract class DynamicListAdapter extends RecyclerView.Adapter<RecyclerVi
     }
 
     public void showErrorItem() {
-        if (mItems.isEmpty() || (mItems.get(mItems.size()-1).getType() != BaseListItem.Type.ERROR)) {
+        if (mItems.isEmpty() || (mItems.get(mItems.size()-1).getType() != BaseListItem.ERROR)) {
             List<BaseListItem> oldItems = new ArrayList<>(mItems);
             mItems.add(new ErrorItem());
             showUpdatedItems(oldItems);
@@ -90,7 +90,7 @@ public abstract class DynamicListAdapter extends RecyclerView.Adapter<RecyclerVi
 
     public void hideErrorItem() {
         int lastPosition = mItems.size() - 1;
-        if (!mItems.isEmpty() && mItems.get(lastPosition).getType() == BaseListItem.Type.ERROR) {
+        if (!mItems.isEmpty() && mItems.get(lastPosition).getType() == BaseListItem.ERROR) {
             List<BaseListItem> oldItems = new ArrayList<>(mItems);
             mItems.remove(lastPosition);
             showUpdatedItems(oldItems);

@@ -44,7 +44,7 @@ public abstract class DataListItem implements BaseListItem {
     }
 
     @Override
-    public Type getType() {
-        return Type.DATA;
+    public int getType() {
+        return DATA;
     }
 }
