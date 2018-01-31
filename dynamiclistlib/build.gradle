@@ -1,0 +1,70 @@
+apply plugin: 'com.android.library'
+
+apply plugin: 'com.android.library'
+
+ext {
+    bintrayRepo = 'dynamiclist'
+    bintrayName = 'dymaniclistlib'   // Has to be same as your library module name
+
+    publishedGroupId = 'ru.taxcom.mobile.android'
+    libraryName = 'dynamiclist'
+    artifact = 'dymaniclistlib'     // Has to be same as your library module name
+
+    libraryDescription = 'Dynamic RecyclerView List base classes'
+
+
+    siteUrl = ''
+    gitUrl = 'gitlab.taxcom.ru'
+    githubRepository= ''
+
+    libraryVersion = '0.1.0'
+
+    developerId = 'IvanovAV'
+    developerName = 'Ivanov Aleksei'
+    developerEmail = 'IvanovAV@taxcom.ru'
+
+    licenseName = 'The MIT License (MIT)'
+    licenseUrl = 'https://opensource.org/licenses/MIT'
+    allLicenses = ["MIT"]
+}
+
+android {
+    compileSdkVersion 27
+
+
+
+    defaultConfig {
+        minSdkVersion 18
+        targetSdkVersion 27
+        versionCode 1
+        versionName "0.1"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+ext {
+    supportLibraryVersion = '27.0.2'
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation "com.android.support:appcompat-v7:$supportLibraryVersion"
+    implementation "com.android.support:recyclerview-v7:$supportLibraryVersion"
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.1'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+}
+
+apply from: 'https://raw.githubusercontent.com/nisrulz/JCenter/master/installv1.gradle'
+apply from: 'https://raw.githubusercontent.com/nisrulz/JCenter/master/bintrayv1.gradle'
