@@ -5,9 +5,9 @@ import java.util.List;
 
 import ru.taxcom.mobile.android.basedynamiclist.model.BaseListItem;
 
-public interface DynamicListView<T extends BaseListItem> {
+public interface DynamicListView {
 
-    void showList(List<T> items);
+    void showList(List<BaseListItem> items);
 
     void clearList();
 
@@ -21,7 +21,7 @@ public interface DynamicListView<T extends BaseListItem> {
 
     void loadNextPageError(Throwable throwable);
 
-    void loadNextPage(List<T> items);
+    void loadNextPage(List<BaseListItem> items);
 
     void showProgress();
 

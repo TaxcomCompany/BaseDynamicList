@@ -12,22 +12,22 @@ import ru.taxcom.mobile.android.basedynamiclist.model.ErrorItem;
 import ru.taxcom.mobile.android.basedynamiclist.model.ProgressItem;
 import ru.taxcom.mobile.android.basedynamiclist.utils.DiffCallback;
 
-public abstract class DynamicListAdapter<T> extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public abstract class DynamicListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     protected List<BaseListItem> mItems;
     protected int mDataItemStates = 1;
-    protected OnItemClickListener<T> mItemClickListener;
-    protected OnItemExpandClickListener<T> mItemExpandListener;
+    protected OnItemClickListener mItemClickListener;
+    protected OnItemExpandClickListener mItemExpandListener;
 
     public DynamicListAdapter() {
         mItems = new ArrayList<>();
     }
 
-    public void setItemClickListener(OnItemClickListener<T> listener) {
+    public void setItemClickListener(OnItemClickListener listener) {
         mItemClickListener = listener;
     }
 
-    public void setItemExpandListener(OnItemExpandClickListener<T> listener) {
+    public void setItemExpandListener(OnItemExpandClickListener listener) {
         mItemExpandListener = listener;
     }
 
@@ -122,11 +122,11 @@ public abstract class DynamicListAdapter<T> extends RecyclerView.Adapter<Recycle
         return mItems.size();
     }
 
-    public interface OnItemClickListener<T> {
-        void onItemClick(T data);
+    public interface OnItemClickListener {
+        void onItemClick(BaseListItem item);
     }
 
-    public interface OnItemExpandClickListener<T> {
-        void onClick(T data);
+    public interface OnItemExpandClickListener {
+        void onClick(BaseListItem item);
     }
 }
