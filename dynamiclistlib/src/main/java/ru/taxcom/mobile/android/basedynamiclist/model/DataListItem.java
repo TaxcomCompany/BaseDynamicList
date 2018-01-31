@@ -1,6 +1,8 @@
 package ru.taxcom.mobile.android.basedynamiclist.model;
 
 
+import android.support.annotation.NonNull;
+
 public abstract class DataListItem implements BaseListItem {
 
     protected String mId;
@@ -11,6 +13,10 @@ public abstract class DataListItem implements BaseListItem {
         if (mState >= statesCount) {
             mState = 0;
         }
+    }
+
+    public DataListItem(@NonNull String id) {
+        mId = id;
     }
 
     public int getDataState() {

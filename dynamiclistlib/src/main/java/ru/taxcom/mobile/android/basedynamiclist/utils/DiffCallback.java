@@ -6,6 +6,7 @@ import java.util.List;
 
 import ru.taxcom.mobile.android.basedynamiclist.model.BaseListItem;
 import ru.taxcom.mobile.android.basedynamiclist.model.DataListItem;
+import ru.taxcom.mobile.android.basedynamiclist.model.HeaderItem;
 
 
 public class DiffCallback extends DiffUtil.Callback {
@@ -34,6 +35,11 @@ public class DiffCallback extends DiffUtil.Callback {
             DataListItem oldItem = (DataListItem) mOldItems.get(oldItemPosition);
             DataListItem newItem = (DataListItem) mNewItems.get(newItemPosition);
             return oldItem.getId().equals(newItem.getId());
+        } else if (mOldItems.get(oldItemPosition) instanceof HeaderItem
+                && mNewItems.get(newItemPosition) instanceof HeaderItem) {
+            HeaderItem oldItem = (HeaderItem) mOldItems.get(oldItemPosition);
+            HeaderItem newItem = (HeaderItem) mNewItems.get(newItemPosition);
+            return oldItem.equals(newItem);
         } else if (mOldItems.get(oldItemPosition).getType() != BaseListItem.Type.DATA &&
                 mOldItems.get(oldItemPosition).getType() == mNewItems.get(newItemPosition).getType()) {
             return true;

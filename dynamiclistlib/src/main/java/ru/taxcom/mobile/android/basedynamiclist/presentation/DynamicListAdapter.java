@@ -52,7 +52,6 @@ public abstract class DynamicListAdapter<T> extends RecyclerView.Adapter<Recycle
             }
             showUpdatedItems(oldItems);
         }
-
     }
 
     public void update(List<BaseListItem> items) {
@@ -65,9 +64,11 @@ public abstract class DynamicListAdapter<T> extends RecyclerView.Adapter<Recycle
     }
 
     public void showProgress() {
-        List<BaseListItem> oldItems = new ArrayList<>(mItems);
-        mItems.add(new ProgressItem());
-        showUpdatedItems(oldItems);
+        if (mItems.isEmpty() || (mItems.get(mItems.size()-1).getType() != BaseListItem.Type.PROGRESS)) {
+            List<BaseListItem> oldItems = new ArrayList<>(mItems);
+            mItems.add(new ProgressItem());
+            showUpdatedItems(oldItems);
+        }
     }
 
     public void hideProgress() {
@@ -80,9 +81,11 @@ public abstract class DynamicListAdapter<T> extends RecyclerView.Adapter<Recycle
     }
 
     public void showErrorItem() {
-        List<BaseListItem> oldItems = new ArrayList<>(mItems);
-        mItems.add(new ErrorItem());
-        showUpdatedItems(oldItems);
+        if (mItems.isEmpty() || (mItems.get(mItems.size()-1).getType() != BaseListItem.Type.ERROR)) {
+            List<BaseListItem> oldItems = new ArrayList<>(mItems);
+            mItems.add(new ErrorItem());
+            showUpdatedItems(oldItems);
+        }
     }
 
     public void hideErrorItem() {
@@ -94,7 +97,7 @@ public abstract class DynamicListAdapter<T> extends RecyclerView.Adapter<Recycle
         }
     }
 
-    public void addPages(List<BaseListItem> items) {
+    public void addPage(List<BaseListItem> items) {
         if (items != null) {
             List<BaseListItem> oldItems = new ArrayList<>(mItems);
             mItems.addAll(items);
