@@ -17,7 +17,7 @@ ext {
     gitUrl = 'gitlab.taxcom.ru'
     githubRepository= ''
 
-    libraryVersion = '0.1.0'
+    libraryVersion = '1.0'
 
     developerId = 'IvanovAV'
     developerName = 'Ivanov Aleksei'
