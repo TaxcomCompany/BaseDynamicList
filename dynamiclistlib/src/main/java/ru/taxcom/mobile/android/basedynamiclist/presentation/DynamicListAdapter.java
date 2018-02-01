@@ -118,6 +118,14 @@ public abstract class DynamicListAdapter extends RecyclerView.Adapter<RecyclerVi
     }
 
     @Override
+    public int getItemViewType(int position) {
+        if (!mItems.isEmpty()) {
+            return mItems.get(position).getType();
+        }
+        return super.getItemViewType(position);
+    }
+
+    @Override
     public int getItemCount() {
         return mItems.size();
     }
