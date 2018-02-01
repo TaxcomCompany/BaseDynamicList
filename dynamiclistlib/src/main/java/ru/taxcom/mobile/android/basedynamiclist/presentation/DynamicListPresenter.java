@@ -3,9 +3,9 @@ package ru.taxcom.mobile.android.basedynamiclist.presentation;
 
 import ru.taxcom.mobile.android.basedynamiclist.view.DynamicListView;
 
-public interface DynamicListPresenter {
+public interface DynamicListPresenter<T extends  DynamicListView> {
 
-    void bind(DynamicListView view);
+    void bind(T view);
 
     void loadItems();
 

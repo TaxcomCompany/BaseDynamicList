@@ -1,7 +1,14 @@
 package ru.taxcom.mobile.android.basedynamiclist.model;
 
 
-public class ProgressItem implements BaseListItem{
+import android.support.annotation.NonNull;
+
+public class ProgressItem extends DataListItem {
+
+    public ProgressItem(@NonNull String id) {
+        super(id);
+    }
+
     @Override
     public int getType() {
         return PROGRESS;
@@ -9,8 +16,11 @@ public class ProgressItem implements BaseListItem{
 
     @Override
     public boolean equals(Object obj) {
-        if (obj instanceof ProgressItem && ((ProgressItem) obj).getType() == PROGRESS) {
+        if (obj == this) {
             return true;
+        }
+        if (obj != null && (obj instanceof ProgressItem)) {
+            return super.equals(obj);
         } else {
             return false;
         }

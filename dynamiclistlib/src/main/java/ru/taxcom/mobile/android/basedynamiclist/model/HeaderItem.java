@@ -1,16 +1,16 @@
 package ru.taxcom.mobile.android.basedynamiclist.model;
 
 
-public class HeaderItem implements BaseListItem {
+import android.support.annotation.NonNull;
 
-    protected String mText;
+public class HeaderItem extends DataListItem<StringData> {
 
-    public void setText(String text) {
-        mText = text;
+    public HeaderItem(@NonNull String id) {
+        super(id);
     }
 
-    public String getText() {
-        return mText;
+    public HeaderItem(@NonNull String id, StringData data) {
+        super(id, data);
     }
 
     @Override
@@ -24,21 +24,9 @@ public class HeaderItem implements BaseListItem {
             return true;
         }
         if (obj != null && (obj instanceof HeaderItem)) {
-            HeaderItem item = (HeaderItem) obj;
-            if (mText == item.getText()) {
-                return true;
-            } else if (mText == null || item.getText() == null) {
-                return false;
-            } else {
-                return mText.equals(item.getText());
-            }
+            return super.equals(obj);
         } else {
             return false;
         }
-    }
-
-    @Override
-    public int hashCode() {
-        return 31 + (mText == null ? 0 : mText.hashCode());
     }
 }

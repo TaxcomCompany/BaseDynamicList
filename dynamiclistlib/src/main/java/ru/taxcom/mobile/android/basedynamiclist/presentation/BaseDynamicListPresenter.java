@@ -6,13 +6,13 @@ import java.util.List;
 import ru.taxcom.mobile.android.basedynamiclist.model.BaseListItem;
 import ru.taxcom.mobile.android.basedynamiclist.view.DynamicListView;
 
-public abstract class BaseDynamicListPresenter implements DynamicListPresenter {
+public abstract class BaseDynamicListPresenter<T extends  DynamicListView> implements DynamicListPresenter<T> {
 
-    protected DynamicListView mView;
+    protected T mView;
     protected boolean mLoading = false;
 
     @Override
-    public void bind(DynamicListView view) {
+    public void bind(T view) {
         mView = view;
     }
 

@@ -1,6 +1,16 @@
 package ru.taxcom.mobile.android.basedynamiclist.model;
 
-public class ErrorItem implements BaseListItem {
+import android.support.annotation.NonNull;
+
+public class ErrorItem extends DataListItem<StringData> {
+
+    public ErrorItem(@NonNull String id) {
+        super(id);
+    }
+
+    public ErrorItem(@NonNull String id, StringData data) {
+        super(id, data);
+    }
 
     @Override
     public int getType() {
@@ -9,8 +19,11 @@ public class ErrorItem implements BaseListItem {
 
     @Override
     public boolean equals(Object obj) {
-        if (obj instanceof ErrorItem && ((ErrorItem) obj).getType() == ERROR) {
+        if (obj == this) {
             return true;
+        }
+        if (obj != null && (obj instanceof ErrorItem)) {
+            return super.equals(obj);
         } else {
             return false;
         }

@@ -3,10 +3,18 @@ package ru.taxcom.mobile.android.basedynamiclist.model;
 
 import android.support.annotation.NonNull;
 
-public abstract class DataListItem implements BaseListItem {
+import ru.taxcom.mobile.android.basedynamiclist.utils.EqualUtil;
+
+public class DataListItem<T extends ListData> {
+
+    public static int DATA = 0;
+    public static int HEADER = 1;
+    public static int PROGRESS = 2;
+    public static int ERROR = 3;
 
     protected String mId;
     protected int mState = 0;
+    protected T mData;
 
     public void setNextState(int statesCount) {
         mState++;
@@ -19,31 +27,46 @@ public abstract class DataListItem implements BaseListItem {
         mId = id;
     }
 
-    public int getDataState() {
-        return mState;
+    public DataListItem(@NonNull String id, T data) {
+        mId = id;
+        mData = data;
     }
 
     @Override
-    public abstract boolean equals(Object obj);
+    public boolean equals(Object obj) {
+        if (obj == this) {
+            return true;
+        }
+        if (obj != null && (obj instanceof DataListItem)) {
+            DataListItem item = (DataListItem) obj;
+            return EqualUtil.safeFieldEquals(mId, item.getId())
+                    && EqualUtil.safeFieldEquals(mData, item.getData());
+        } else {
+            return false;
+        }
+    }
 
     @Override
-    public abstract int hashCode();
+    public int hashCode() {
+        int result = 1;
+        int div = 31;
+        result = div * result + (mId == null ? 0 : mId.hashCode());
+        result = div * result + (mData == null ? 0 : mData.hashCode());
+        return result;
+    }
 
-    protected boolean safeFieldEquals(Object o1, Object o2) {
-        if (o1 == o2) {
-            return true;
-        } else if (o1 == null || o2 == null) {
-            return false;
-        } else {
-            return o1.equals(o2);
-        }
+    public int getViewState() {
+        return mState;
     }
 
     public String getId() {
         return mId;
     }
 
-    @Override
+    public T getData() {
+        return mData;
+    }
+
     public int getType() {
         return DATA;
     }
