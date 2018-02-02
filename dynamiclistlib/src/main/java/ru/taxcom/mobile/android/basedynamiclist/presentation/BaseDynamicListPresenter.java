@@ -3,7 +3,7 @@ package ru.taxcom.mobile.android.basedynamiclist.presentation;
 
 import java.util.List;
 
-import ru.taxcom.mobile.android.basedynamiclist.model.BaseListItem;
+import ru.taxcom.mobile.android.basedynamiclist.model.DataListItem;
 import ru.taxcom.mobile.android.basedynamiclist.view.DynamicListView;
 
 public abstract class BaseDynamicListPresenter<T extends  DynamicListView> implements DynamicListPresenter<T> {
@@ -21,7 +21,7 @@ public abstract class BaseDynamicListPresenter<T extends  DynamicListView> imple
         // Переопределять при необходимости добавления динамической подгрузки
     }
 
-    protected void handleSuccess(List<BaseListItem> items) {
+    protected void handleSuccess(List<DataListItem> items) {
         mLoading = false;
         if (mView != null) {
             mView.hideProgress();
@@ -33,7 +33,7 @@ public abstract class BaseDynamicListPresenter<T extends  DynamicListView> imple
         }
     }
 
-    protected void handleNextPage(List<BaseListItem> items) {
+    protected void handleNextPage(List<DataListItem> items) {
         mLoading = false;
         if (mView != null) {
             mView.hideProgress();
@@ -56,8 +56,8 @@ public abstract class BaseDynamicListPresenter<T extends  DynamicListView> imple
         }
     }
 
-    protected boolean isListEmpty(List<BaseListItem> items) {
-        return items.isEmpty() || (items.size() == 1 && items.get(0).getType() != BaseListItem.DATA);
+    protected boolean isListEmpty(List<DataListItem> items) {
+        return items.isEmpty() || (items.size() == 1 && items.get(0).getType() != DataListItem.DATA);
     }
 
     @Override

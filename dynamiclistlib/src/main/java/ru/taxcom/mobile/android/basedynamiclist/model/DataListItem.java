@@ -1,7 +1,6 @@
 package ru.taxcom.mobile.android.basedynamiclist.model;
 
 
-import android.support.annotation.NonNull;
 
 import ru.taxcom.mobile.android.basedynamiclist.utils.EqualUtil;
 
@@ -23,11 +22,11 @@ public class DataListItem<T extends ListData> {
         }
     }
 
-    public DataListItem(@NonNull String id) {
+    public DataListItem(String id) {
         mId = id;
     }
 
-    public DataListItem(@NonNull String id, T data) {
+    public DataListItem(String id, T data) {
         mId = id;
         mData = data;
     }
@@ -39,8 +38,8 @@ public class DataListItem<T extends ListData> {
         }
         if (obj != null && (obj instanceof DataListItem)) {
             DataListItem item = (DataListItem) obj;
-            return EqualUtil.safeFieldEquals(mId, item.getId())
-                    && EqualUtil.safeFieldEquals(mData, item.getData());
+            return EqualUtil.safeEqual(mId, item.getId())
+                    && EqualUtil.safeEqual(mData, item.getData());
         } else {
             return false;
         }

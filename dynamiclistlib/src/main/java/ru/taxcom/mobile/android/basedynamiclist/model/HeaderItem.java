@@ -1,16 +1,14 @@
 package ru.taxcom.mobile.android.basedynamiclist.model;
 
 
-import android.support.annotation.NonNull;
-
 public class HeaderItem extends DataListItem<StringData> {
 
-    public HeaderItem(@NonNull String id) {
-        super(id);
+    public HeaderItem() {
+        super(null);
     }
 
-    public HeaderItem(@NonNull String id, StringData data) {
-        super(id, data);
+    public HeaderItem(StringData data) {
+        super(null, data);
     }
 
     @Override

@@ -1,15 +1,14 @@
 package ru.taxcom.mobile.android.basedynamiclist.model;
 
-import android.support.annotation.NonNull;
 
 public class ErrorItem extends DataListItem<StringData> {
 
-    public ErrorItem(@NonNull String id) {
-        super(id);
+    public ErrorItem() {
+        super(null);
     }
 
-    public ErrorItem(@NonNull String id, StringData data) {
-        super(id, data);
+    public ErrorItem(StringData data) {
+        super(null, data);
     }
 
     @Override

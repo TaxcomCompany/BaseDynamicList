@@ -4,16 +4,16 @@ import android.support.v7.util.DiffUtil;
 
 import java.util.List;
 
-import ru.taxcom.mobile.android.basedynamiclist.model.BaseListItem;
 import ru.taxcom.mobile.android.basedynamiclist.model.DataListItem;
-import ru.taxcom.mobile.android.basedynamiclist.model.HeaderItem;
+
+import static ru.taxcom.mobile.android.basedynamiclist.model.DataListItem.DATA;
 
 
 public class DiffCallback extends DiffUtil.Callback {
-    List<BaseListItem> mOldItems;
-    List<BaseListItem> mNewItems;
+    List<DataListItem> mOldItems;
+    List<DataListItem> mNewItems;
 
-    public DiffCallback(List<BaseListItem> newItems, List<BaseListItem> oldItems) {
+    public DiffCallback(List<DataListItem> newItems, List<DataListItem> oldItems) {
         this.mNewItems = newItems;
         this.mOldItems = oldItems;
     }
@@ -30,18 +30,11 @@ public class DiffCallback extends DiffUtil.Callback {
 
     @Override
     public boolean areItemsTheSame(int oldItemPosition, int newItemPosition) {
-        if (mOldItems.get(oldItemPosition) instanceof DataListItem
-                && mNewItems.get(newItemPosition) instanceof DataListItem) {
-            DataListItem oldItem = (DataListItem) mOldItems.get(oldItemPosition);
-            DataListItem newItem = (DataListItem) mNewItems.get(newItemPosition);
+        DataListItem oldItem = mOldItems.get(oldItemPosition);
+        DataListItem newItem = mNewItems.get(newItemPosition);
+        if (oldItem.getType() == DATA && newItem.getType() == DATA) {
             return oldItem.getId().equals(newItem.getId());
-        } else if (mOldItems.get(oldItemPosition) instanceof HeaderItem
-                && mNewItems.get(newItemPosition) instanceof HeaderItem) {
-            HeaderItem oldItem = (HeaderItem) mOldItems.get(oldItemPosition);
-            HeaderItem newItem = (HeaderItem) mNewItems.get(newItemPosition);
-            return oldItem.equals(newItem);
-        } else if (mOldItems.get(oldItemPosition).getType() != BaseListItem.DATA &&
-                mOldItems.get(oldItemPosition).getType() == mNewItems.get(newItemPosition).getType()) {
+        } else if (oldItem.getType() == newItem.getType()) {
             return true;
         } else {
             return false;

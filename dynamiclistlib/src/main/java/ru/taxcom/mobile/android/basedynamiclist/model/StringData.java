@@ -26,7 +26,7 @@ public class StringData extends ListData {
         }
         if (obj != null && (obj instanceof StringData)) {
             StringData item = (StringData) obj;
-            return EqualUtil.safeFieldEquals(mText, item.getText());
+            return EqualUtil.safeEqual(mText, item.getText());
         } else {
             return false;
         }

@@ -1,12 +1,10 @@
 package ru.taxcom.mobile.android.basedynamiclist.model;
 
 
-import android.support.annotation.NonNull;
-
 public class ProgressItem extends DataListItem {
 
-    public ProgressItem(@NonNull String id) {
-        super(id);
+    public ProgressItem() {
+        super(null);
     }
 
     @Override
