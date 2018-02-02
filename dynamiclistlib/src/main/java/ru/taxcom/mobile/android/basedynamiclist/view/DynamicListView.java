@@ -4,10 +4,11 @@ import android.support.annotation.Nullable;
 import java.util.List;
 
 import ru.taxcom.mobile.android.basedynamiclist.model.DataListItem;
+import ru.taxcom.mobile.android.basedynamiclist.model.ListData;
 
-public interface DynamicListView {
+public interface DynamicListView<D extends ListData> {
 
-    void showList(List<DataListItem> items);
+    void showList(List<DataListItem<D>>  items);
 
     void clearList();
 
@@ -21,7 +22,7 @@ public interface DynamicListView {
 
     void loadNextPageError(Throwable throwable);
 
-    void loadNextPage(List<DataListItem> items);
+    void loadNextPage(List<DataListItem<D>>  items);
 
     void showProgress();
 

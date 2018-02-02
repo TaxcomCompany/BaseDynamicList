@@ -4,15 +4,16 @@ package ru.taxcom.mobile.android.basedynamiclist.presentation;
 import java.util.List;
 
 import ru.taxcom.mobile.android.basedynamiclist.model.DataListItem;
+import ru.taxcom.mobile.android.basedynamiclist.model.ListData;
 import ru.taxcom.mobile.android.basedynamiclist.view.DynamicListView;
 
-public abstract class BaseDynamicListPresenter<T extends  DynamicListView> implements DynamicListPresenter<T> {
+public abstract class BaseDynamicListPresenter<V extends  DynamicListView<D>, D extends ListData> implements DynamicListPresenter<V> {
 
-    protected T mView;
+    protected V mView;
     protected boolean mLoading = false;
 
     @Override
-    public void bind(T view) {
+    public void bind(V view) {
         mView = view;
     }
 
@@ -21,7 +22,7 @@ public abstract class BaseDynamicListPresenter<T extends  DynamicListView> imple
         // Переопределять при необходимости добавления динамической подгрузки
     }
 
-    protected void handleSuccess(List<DataListItem> items) {
+    protected void handleSuccess(List<DataListItem<D>> items) {
         mLoading = false;
         if (mView != null) {
             mView.hideProgress();
@@ -33,7 +34,7 @@ public abstract class BaseDynamicListPresenter<T extends  DynamicListView> imple
         }
     }
 
-    protected void handleNextPage(List<DataListItem> items) {
+    protected void handleNextPage(List<DataListItem<D>>  items) {
         mLoading = false;
         if (mView != null) {
             mView.hideProgress();
@@ -56,7 +57,7 @@ public abstract class BaseDynamicListPresenter<T extends  DynamicListView> imple
         }
     }
 
-    protected boolean isListEmpty(List<DataListItem> items) {
+    protected boolean isListEmpty(List<DataListItem<D>>  items) {
         return items.isEmpty() || (items.size() == 1 && items.get(0).getType() != DataListItem.DATA);
     }
 
