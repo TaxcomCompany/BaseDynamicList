@@ -8,7 +8,9 @@ import java.util.ArrayList;
 import java.util.List;
 import ru.taxcom.mobile.android.basedynamiclist.model.DataListItem;
 import ru.taxcom.mobile.android.basedynamiclist.model.ErrorItem;
+import ru.taxcom.mobile.android.basedynamiclist.model.HeaderItem;
 import ru.taxcom.mobile.android.basedynamiclist.model.ProgressItem;
+import ru.taxcom.mobile.android.basedynamiclist.model.StringData;
 import ru.taxcom.mobile.android.basedynamiclist.utils.DiffCallback;
 
 import static ru.taxcom.mobile.android.basedynamiclist.model.DataListItem.DATA;
@@ -60,6 +62,26 @@ public abstract class DynamicListAdapter extends RecyclerView.Adapter<RecyclerVi
             List<DataListItem> oldItems = new ArrayList<>(mItems);
             mItems.clear();
             mItems.addAll(items);
+            showUpdatedItems(oldItems);
+        }
+    }
+
+    public void showHeader(String text) {
+        List<DataListItem> oldItems = mItems;
+        mItems = new ArrayList<>();
+        if (text != null && !text.isEmpty()) {
+            mItems.add(new HeaderItem(new StringData(text)));
+        } else {
+            mItems.add(new HeaderItem());
+        }
+        mItems.addAll(oldItems);
+        showUpdatedItems(oldItems);
+    }
+
+    public void hideHeader() {
+        if (!mItems.isEmpty() && mItems.get(0).getType() == DataListItem.HEADER) {
+            List<DataListItem> oldItems = new ArrayList<>(mItems);
+            mItems.remove(0);
             showUpdatedItems(oldItems);
         }
     }

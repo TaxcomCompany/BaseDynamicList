@@ -1,7 +1,5 @@
 apply plugin: 'com.android.library'
 
-apply plugin: 'com.android.library'
-
 ext {
     bintrayRepo = 'dynamiclist'
     bintrayName = 'dynamiclistlib'   // Has to be same as your library module name
@@ -17,7 +15,7 @@ ext {
     gitUrl = 'gitlab.taxcom.ru'
     githubRepository= ''
 
-    libraryVersion = '1.0'
+    libraryVersion = '0.9.1'
 
     developerId = 'IvanovAV'
     developerName = 'Ivanov Aleksei'
@@ -37,7 +35,7 @@ android {
         minSdkVersion 18
         targetSdkVersion 27
         versionCode 1
-        versionName "1.0"
+        versionName "0.9.1"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
